@@ -16,7 +16,6 @@ import (
 	"os"
 	"os/signal"
 	"strconv"
-	"time"
 	"unicode"
 )
 
@@ -98,9 +97,10 @@ func main() {
 					record[3] = UniformNumbers(record[3])
 					err = SendgRPC(record, c, ctx)
 					if err != nil {
-						break
+						break L
 					}
-					time.Sleep(time.Second * 2)
+					// added for debug to test the effect of signals
+					// time.Sleep(time.Second * 2)
 				}
 			}
 			if err == io.EOF {fmt.Println("GOOD JOB!!Each record of the csv has been sent to the server")}

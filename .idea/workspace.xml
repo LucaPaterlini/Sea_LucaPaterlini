@@ -315,8 +315,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Build.go build Client" />
         <item itemvalue="Go Build.go build Server" />
+        <item itemvalue="Go Build.go build Client" />
         <item itemvalue="Go Test.go test mock_pipeProto" />
         <item itemvalue="Go Test.go test Client ^TestSendgRPC$" />
         <item itemvalue="Go Test.go test Client" />

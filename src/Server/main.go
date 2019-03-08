@@ -3,11 +3,14 @@ package main
 import (
 	pb "../pipeProto"
 	"context"
+	"fmt"
 	"github.com/globalsign/mgo"
 	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/grpc"
 	"log"
 	"net"
+	"os"
+	"os/signal"
 )
 
 var accountTable *mgo.Collection
@@ -24,6 +27,18 @@ func (s *server) AddUpdateRecord(ctx context.Context, in *pb.Record) (_ *empty.E
 }
 
 func main() {
+	// handling the
+	c := make(chan os.Signal, 1)
+	signal.Notify(c, os.Interrupt,os.Kill)
+	go func() {
+		select {
+		case <-c:
+			fmt.Print("Server: I got stopped!")
+			os.Exit(1)
+		}
+	}()
+
+	// connecting to the database
 	mongoSession, err := mgo.DialWithTimeout(MONGODBHOSTS+"/"+MONGODBDATABASE, TIMEOUTDATABASE)
 	if err != nil {
 		log.Println("error While connecting to MongoDb", err.Error())

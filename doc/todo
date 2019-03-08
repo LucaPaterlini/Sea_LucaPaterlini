@@ -1,5 +1,5 @@
-- stream implement it
-+ convert a array of strings in the object
-- use channel with grpc function to send a the stream of data
+- had protocol stream
 - handle signal interruptions
-- question witch kind of database mongodb is fine
+- test signal interrupts
+- write a bit on potentials improvements
+- readme

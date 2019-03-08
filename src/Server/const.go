@@ -8,5 +8,4 @@ const (
 	NAMECOLLECTION    = "addressBook"
 	SERVICEPORT       = ":11235"
 	TIMEOUTDATABASE   = 10 * time.Second
-	TIMEOUTCONNECTION = 2 * time.Second
 )

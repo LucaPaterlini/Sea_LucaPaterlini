@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c0628ddc-c1ac-4c2c-bbb6-caf7d5170737" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/mock_pipeProto/p_mock_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/const.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/const.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/main_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/main_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/const.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/const.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pipeProto/pipe.proto" beforeDir="false" afterPath="$PROJECT_DIR$/src/pipeProto/pipe.proto" afterDir="false" />
-    </list>
+    <list default="true" id="c0628ddc-c1ac-4c2c-bbb6-caf7d5170737" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +13,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Client/main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="63" column="26" lean-forward="true" selection-start-line="63" selection-start-column="26" selection-end-line="63" selection-end-column="26" />
+            <state relative-caret-position="90">
+              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
               <folding>
                 <element signature="n#!!block;n#UniformNumbers#0" />
                 <element signature="n#!!block;n#SendgRPC#0" />
@@ -32,11 +24,21 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../../../spare/READMETask.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor />
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Server/main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="36" column="22" lean-forward="true" selection-start-line="36" selection-start-column="22" selection-end-line="36" selection-end-column="22" />
+            <state>
+              <caret lean-forward="true" />
               <folding>
                 <element signature="e#14#173#0" expanded="true" />
               </folding>
@@ -47,8 +49,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/mock_pipeProto/p_mock_test.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="17" lean-forward="true" selection-start-column="17" selection-end-column="17" />
+            <state relative-caret-position="154">
+              <caret line="29" column="32" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="32" />
               <folding>
                 <element signature="e#24#80#0" expanded="true" />
               </folding>
@@ -57,37 +59,28 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pipeProto/pipe.pb.go">
+        <entry file="file://$PROJECT_DIR$/src/mock_pipeProto/p_mock.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="172" column="35" selection-start-line="172" selection-start-column="35" selection-end-line="172" selection-end-column="35" />
+            <state relative-caret-position="150">
+              <caret line="10" column="6" lean-forward="true" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/go/src/google.golang.org/grpc/server.go">
+        <entry file="file://$PROJECT_DIR$/src/pipeProto/pipe.pb.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="97">
-              <caret line="354" column="5" selection-start-line="354" selection-start-column="5" selection-end-line="354" selection-end-column="5" />
+            <state relative-caret-position="165">
+              <caret line="96" lean-forward="true" selection-start-line="96" selection-end-line="96" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pipeProto/pipe.proto">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
               <caret line="17" selection-start-line="17" selection-end-line="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/mock_pipeProto/p_mock.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -104,8 +97,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Client/const.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="24" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="39" />
+            <state relative-caret-position="120">
+              <caret line="8" column="17" lean-forward="true" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -113,8 +106,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Client/main_test.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="282">
-              <caret line="32" column="1" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="1" />
+            <state relative-caret-position="135">
+              <caret line="14" column="4" lean-forward="true" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -135,6 +128,7 @@
       <find>log</find>
       <find>fmt</find>
       <find>Dial</find>
+      <find>proto</find>
       <find>ctx</find>
     </findStrings>
     <replaceStrings>
@@ -143,7 +137,7 @@
   </component>
   <component name="GOROOT" path="/usr/lib/go-1.11" />
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/src" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -166,9 +160,9 @@
         <option value="$PROJECT_DIR$/src/Server/main_test.go" />
         <option value="$PROJECT_DIR$/src/pipeProto/mock_pipe/p_mock_test.go" />
         <option value="$PROJECT_DIR$/src/pipeProto/mock_pipeProto/p_mock_test.go" />
+        <option value="$PROJECT_DIR$/src/pipeProto/pipe.proto" />
         <option value="$PROJECT_DIR$/src/mock_pipeProto/p_mock_test.go" />
         <option value="$PROJECT_DIR$/src/mock_pipeProto/p_mock.go" />
-        <option value="$PROJECT_DIR$/src/pipeProto/pipe.proto" />
       </list>
     </option>
   </component>
@@ -194,24 +188,6 @@
               <item name="Sea_LucaPaterlini" type="b2602c69:ProjectViewProjectNode" />
               <item name="Sea_LucaPaterlini" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Sea_LucaPaterlini" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Sea_LucaPaterlini" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Client" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Sea_LucaPaterlini" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Sea_LucaPaterlini" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="mock_pipeProto" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Sea_LucaPaterlini" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Sea_LucaPaterlini" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="pipeProto" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Sea_LucaPaterlini" type="b2602c69:ProjectViewProjectNode" />
@@ -331,18 +307,6 @@
     </recent_temporary>
   </component>
   <component name="TestHistory">
-    <history-entry file="go_test_Client_^TestSendgRPC$ - 2019.03.08 at 14h 53m 42s.xml">
-      <configuration name="go test Client ^TestSendgRPC$" configurationId="GoTestRunConfiguration" />
-    </history-entry>
-    <history-entry file="go_test_Client_^TestSendgRPC$ - 2019.03.08 at 14h 54m 35s.xml">
-      <configuration name="go test Client ^TestSendgRPC$" configurationId="GoTestRunConfiguration" />
-    </history-entry>
-    <history-entry file="go_test_Client_^TestSendgRPC$ - 2019.03.08 at 14h 54m 45s.xml">
-      <configuration name="go test Client ^TestSendgRPC$" configurationId="GoTestRunConfiguration" />
-    </history-entry>
-    <history-entry file="go_test_Client_^TestSendgRPC$ - 2019.03.08 at 14h 56m 25s.xml">
-      <configuration name="go test Client ^TestSendgRPC$" configurationId="GoTestRunConfiguration" />
-    </history-entry>
     <history-entry file="go_test_Client_^TestSendgRPC$ - 2019.03.08 at 15h 05m 41s.xml">
       <configuration name="go test Client ^TestSendgRPC$" configurationId="GoTestRunConfiguration" />
     </history-entry>
@@ -361,11 +325,23 @@
     <history-entry file="go_test_mock_pipeProto - 2019.03.08 at 17h 20m 55s.xml">
       <configuration name="go test mock_pipeProto" configurationId="GoTestRunConfiguration" />
     </history-entry>
+    <history-entry file="go_test_mock_pipeProto - 2019.03.08 at 17h 22m 18s.xml">
+      <configuration name="go test mock_pipeProto" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="go_test_mock_pipeProto - 2019.03.08 at 17h 23m 44s.xml">
+      <configuration name="go test mock_pipeProto" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="go_test_mock_pipeProto - 2019.03.08 at 17h 24m 21s.xml">
+      <configuration name="go test mock_pipeProto" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="go_test_mock_pipeProto - 2019.03.08 at 17h 24m 35s.xml">
+      <configuration name="go test mock_pipeProto" configurationId="GoTestRunConfiguration" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="30" width="1366" height="738" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15530303" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15530303" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="DB Browser" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -380,7 +356,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="DB Execution Console" order="9" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.47947454" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.47947454" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -464,39 +440,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../../spare/READMETask.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/doc/todo">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="21" selection-start-column="21" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Server/const.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Client/main_test.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="32" column="1" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Client/const.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="24" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="39" />
         </state>
       </provider>
     </entry>
@@ -513,16 +460,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Server/main.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="36" column="22" lean-forward="true" selection-start-line="36" selection-start-column="22" selection-end-line="36" selection-end-column="22" />
-          <folding>
-            <element signature="e#14#173#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Server/main_test.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -533,10 +470,72 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/pipeProto/pipe.proto">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mock_pipeProto/p_mock.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="6" lean-forward="true" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mock_pipeProto/p_mock_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="29" column="32" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="32" />
+          <folding>
+            <element signature="e#24#80#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pipeProto/pipe.pb.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="96" lean-forward="true" selection-start-line="96" selection-end-line="96" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Server/const.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Server/main.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
+          <folding>
+            <element signature="e#14#173#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Client/main_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="14" column="4" lean-forward="true" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Client/const.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="17" lean-forward="true" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Client/main.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="63" column="26" lean-forward="true" selection-start-line="63" selection-start-column="26" selection-end-line="63" selection-end-column="26" />
+        <state relative-caret-position="90">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
           <folding>
             <element signature="n#!!block;n#UniformNumbers#0" />
             <element signature="n#!!block;n#SendgRPC#0" />
@@ -545,34 +544,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mock_pipeProto/p_mock_test.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="17" lean-forward="true" selection-start-column="17" selection-end-column="17" />
-          <folding>
-            <element signature="e#24#80#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mock_pipeProto/p_mock.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pipeProto/pipe.pb.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="172" column="35" selection-start-line="172" selection-start-column="35" selection-end-line="172" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pipeProto/pipe.proto">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
+    <entry file="file://$PROJECT_DIR$/../../../spare/READMETask.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
         </state>
       </provider>
     </entry>

@@ -14,7 +14,9 @@ import (
 	"io"
 	"log"
 	"os"
+	"os/signal"
 	"strconv"
+	"time"
 	"unicode"
 )
 
@@ -51,37 +53,54 @@ func SendgRPC(record []string, c pb.TransferClient, ctx context.Context) (err er
 	return
 }
 
+
+
 func main() {
 	// initialize the read of the csv
 	f, err := os.Open(READERCSVPATH)
 	r := csv.NewReader(bufio.NewReader(f))
 	// prepare the connection on the client side
 	conn, err := grpc.Dial(ADDRESS, grpc.WithInsecure())
+
 	if err != nil {
 		log.Printf("Unable to connect to %s: %s", ADDRESS, err.Error())
 	} else {
 		c := pb.NewTransferClient(conn)
-		ctx, cancel := context.WithTimeout(context.Background(), TIMEOUTCONNECTION)
+		ctx, cancel := context.WithCancel(context.Background())
 		defer cancel()
+
+		// routine handler of the signals
+		chanTerm := make(chan os.Signal, 1)
+		signal.Notify(chanTerm, os.Interrupt,os.Kill)
+
 		// loop over each record of the csv
 		if err == nil {
 			var record []string
+			L:
 			for err != io.EOF {
-				record, err = r.Read()
-				// avoid first line and fields with not digit id
-				if len(record) == 0 {
-					continue
-				}
-				if _, err = strconv.Atoi(record[0]); err != nil {
-					continue
-				}
-				record[3] = UniformNumbers(record[3])
-				err = SendgRPC(record, c, ctx)
-				if err != nil {
-					break
+				select {
+				case <-chanTerm:
+					fmt.Print("Client: I got stopped!")
+					cancel()
+					break L
+				default:
+					record, err = r.Read()
+					// avoid first line and fields with not digit id
+					if len(record) == 0 {
+						continue
+					}
+					if _, err = strconv.Atoi(record[0]); err != nil {
+						continue
+					}
+					record[3] = UniformNumbers(record[3])
+					err = SendgRPC(record, c, ctx)
+					if err != nil {
+						break
+					}
+					time.Sleep(time.Second * 2)
 				}
 			}
+			if err == io.EOF {fmt.Println("GOOD JOB!!Each record of the csv has been sent to the server")}
 		}
-		fmt.Println("GOOD JOB!!Each record of the csv has been sent to the server ")
 	}
 }

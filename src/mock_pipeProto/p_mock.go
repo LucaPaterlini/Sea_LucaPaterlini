@@ -9,7 +9,6 @@ import (
 	empty "github.com/golang/protobuf/ptypes/empty"
 	grpc "google.golang.org/grpc"
 	reflect "reflect"
-	"../pipeProto"
 )
 
 // MockTransferClient is a mock of TransferClient interface
@@ -36,7 +35,7 @@ func (_m *MockTransferClient) EXPECT() *MockTransferClientMockRecorder {
 }
 
 // AddUpdateRecord mocks base method
-func (_m *MockTransferClient) AddUpdateRecord(ctx context.Context, in *pipe.Record, opts ...grpc.CallOption) (*empty.Empty, error) {
+func (_m *MockTransferClient) AddUpdateRecord(ctx context.Context, in *Record, opts ...grpc.CallOption) (*empty.Empty, error) {
 	_s := []interface{}{ctx, in}
 	for _, _x := range opts {
 		_s = append(_s, _x)
@@ -77,7 +76,7 @@ func (_m *MockTransferServer) EXPECT() *MockTransferServerMockRecorder {
 }
 
 // AddUpdateRecord mocks base method
-func (_m *MockTransferServer) AddUpdateRecord(_param0 context.Context, _param1 *pipe.Record) (*empty.Empty, error) {
+func (_m *MockTransferServer) AddUpdateRecord(_param0 context.Context, _param1 *Record) (*empty.Empty, error) {
 	ret := _m.ctrl.Call(_m, "AddUpdateRecord", _param0, _param1)
 	ret0, _ := ret[0].(*empty.Empty)
 	ret1, _ := ret[1].(error)

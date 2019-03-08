@@ -7,5 +7,4 @@ const (
 	PHONEPREFIX       = "+44"
 	ADDRESS           = "localhost:11235"
 	TIMEOUTCONNECTION = time.Second
-	WAITATTEMPT       = 2 * time.Second
 )

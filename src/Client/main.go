@@ -15,7 +15,6 @@ import (
 	"log"
 	"os"
 	"strconv"
-	"time"
 	"unicode"
 )
 
@@ -46,13 +45,8 @@ func SendgRPC(record []string, c pb.TransferClient, ctx context.Context) (err er
 	item := &pb.Record{Id: id, Name: record[1], Email: record[1], Phone: record[2]}
 	_, err = c.AddUpdateRecord(ctx, item)
 
-	for err != nil {
+	if err != nil {
 		log.Println("Error on server response ID:", item.Id, " Error: ", err.Error())
-		time.Sleep(WAITATTEMPT)
-		var conn *grpc.ClientConn
-		conn, err = grpc.Dial(ADDRESS, grpc.WithInsecure())
-		c := pb.NewTransferClient(conn)
-		_, err = c.AddUpdateRecord(ctx, item)
 	}
 	return
 }

@@ -67,11 +67,14 @@ func main() {
 	} else {
 		c := pb.NewTransferClient(conn)
 		ctx, cancel := context.WithCancel(context.Background())
-		defer cancel()
 
 		// routine handler of the signals
 		chanTerm := make(chan os.Signal, 1)
 		signal.Notify(chanTerm, os.Interrupt,os.Kill)
+		defer func() {
+			signal.Stop(chanTerm)
+			cancel()
+		}()
 
 		// loop over each record of the csv
 		if err == nil {

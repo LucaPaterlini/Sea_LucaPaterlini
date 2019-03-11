@@ -1,10 +1,8 @@
-package main
+package config
 
-import "time"
-
+// Client
 const (
 	READERCSVPATH     = "data/data.csv"
 	PHONEPREFIX       = "+44"
 	ADDRESS           = "localhost:11235"
-	TIMEOUTCONNECTION = time.Second
 )

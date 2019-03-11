@@ -1,7 +1,10 @@
+// Package main this package contain the implentation of the receiver
+// service , it writes on the database the new record or return
+// an ack of the failure with a fail message and the serial of the request
 package main
 
 import (
-	pp "../pipe"
+	pipe "../pipe"
 	"fmt"
 	"github.com/globalsign/mgo"
 	"google.golang.org/grpc"
@@ -17,10 +20,10 @@ var accountTable *mgo.Collection
 type transferServer struct{}
 
 // AddUpdateRecord implement the functionality of receiving a Rercord and Upsert it in the mongodb database
-func (s *transferServer) AddUpdateRecord( stream  pp.Transfer_AddUpdateRecordServer)(err error){
+func (s *transferServer) AddUpdateRecord( stream  pipe.Transfer_AddUpdateRecordServer)(err error){
 	fmt.Println("hello")
 	for {
-		var item *pp.Record
+		var item *pipe.Record
 		item, err = stream.Recv()
 		if err == io.EOF {
 			return nil
@@ -35,7 +38,7 @@ func (s *transferServer) AddUpdateRecord( stream  pp.Transfer_AddUpdateRecordSer
 		if err != nil {
 			msg = fmt.Sprint("Error on Update: ", item.Id, " err: ", err.Error())
 		}
-		ack := &pp.Ack{Err: err != nil, Message: msg}
+		ack := &pipe.Ack{Err: err != nil, Message: msg}
 		// halting the read loop if the connections is not working
 		if err = stream.Send(ack); err != nil {
 				log.Printf("Stream connection failed: %v", err.Error())
@@ -52,7 +55,7 @@ func signalHandling(){
 	go func() {
 		select {
 		case <-c:
-			fmt.Print("Server: I got stopped!")
+			fmt.Print("Server: I got stopipeed!")
 			os.Exit(1)
 		}
 	}()
@@ -73,7 +76,7 @@ func main() {
 			log.Fatalf("failed to listen: %v", err)
 		}
 		s := grpc.NewServer()
-		pp.RegisterTransferServer(s, &transferServer{})
+		pipe.RegisterTransferServer(s, &transferServer{})
 		if err := s.Serve(lis); err != nil {
 			log.Fatalf("failed to serve: %v", err)
 		}

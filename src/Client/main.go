@@ -1,14 +1,15 @@
-// main this package read a csv and send each record over to the port
+// Package main this package read a csv and send each record over to the port
 // mentioned in the configuration in cost.go
 
 package main
 
 import (
-	pb "../pipe"
+	"../pipe"
+	"./calc"
+	"./config"
 	"bufio"
 	"context"
 	"encoding/csv"
-	"errors"
 	"fmt"
 	"google.golang.org/grpc"
 	"io"
@@ -17,51 +18,21 @@ import (
 	"os/signal"
 	"strconv"
 	"sync"
-	"time"
-	"unicode"
 )
 
-// UniformNumbers standardize all the phone numbers in the formate [PREFIX]PHONENUMBER
-func UniformNumbers(phoneNumber string) (phoneNumberFiltered string) {
-	for _, c := range phoneNumber {
-		if unicode.IsDigit(c) {
-			phoneNumberFiltered += string(c)
-		}
-	}
-	if len(phoneNumberFiltered) == 0 {
-		return
-	}
-	if phoneNumberFiltered[0] == '0' {
-		phoneNumberFiltered = phoneNumberFiltered[1:]
-	}
-	phoneNumberFiltered = PHONEPREFIX + phoneNumberFiltered
-	return
-}
-
-// RecordInit initializing the item to send
-func RecordInit(recordS []string)(item *pb.Record,err error){
-	recordS[3] = UniformNumbers(recordS[3])
-	id, err := strconv.ParseInt(recordS[0], 0, 64)
-	if err != nil {
-		err = errors.New("invalid id cannot send a not int value: " + recordS[0] + "err: " + err.Error())
-		return
-	}
-	item = &pb.Record{Id: id, Name: recordS[1], Email: recordS[2], Phone: recordS[3]}
-	return
-}
-
 // FetchCsvSendgRPC read from the csv, invoke the checks and send it over the stream
-func FetchCsvSendgRPC(r *csv.Reader,stream pb.Transfer_AddUpdateRecordClient, chanTerm <-chan os.Signal, wg *sync.WaitGroup){
+func FetchCsvSendgRPC(r *csv.Reader,stream pipe.Transfer_AddUpdateRecordClient, chanTerm <-chan os.Signal, wg *sync.WaitGroup){
 	defer wg.Done()
 	// loop over each record of the csv
 	var recordS []string
 	var errRead error
-
+	serial := int64(0)
 	errRead=nil
 	L:for errRead != io.EOF {
+			serial +=1
 			select {
 			case <-chanTerm:
-				fmt.Print("Client: I got stopped!")
+				fmt.Print("Client: I got stopipeed!")
 				break L
 			default:
 				recordS, errRead = r.Read()
@@ -73,7 +44,8 @@ func FetchCsvSendgRPC(r *csv.Reader,stream pb.Transfer_AddUpdateRecordClient, ch
 					continue
 				}
 				// prepare the record and send it
-				item,err := RecordInit(recordS)
+				item,err := calc.RecordInit(recordS)
+				item.Serial = serial
 				if err!=nil{log.Println(err.Error())}
 				log.Println("Sending",item)
 				err = stream.Send(item)
@@ -86,11 +58,11 @@ func FetchCsvSendgRPC(r *csv.Reader,stream pb.Transfer_AddUpdateRecordClient, ch
 					break L
 				}
 				if reply.Err {
-					log.Println("Server error:",reply.Message)
+					log.Println("Server error:",reply.Message," Seq Num.",reply.Serial)
 					break L
 				}
 				// added for debug to test the effect of signals
-				 time.Sleep(time.Second * 2)
+				// time.Sleep(time.Second * 2)
 			}
 		}
 		if errs := stream.CloseSend();errs!=nil{
@@ -105,15 +77,15 @@ func main() {
 	chanTerm := make(chan os.Signal, 1)
 	signal.Notify(chanTerm, os.Interrupt,os.Kill)
 	// initialize the read of the csv
-	f, err := os.Open(READERCSVPATH)
+	f, err := os.Open(config.READERCSVPATH)
 	if err !=nil{log.Println(err.Error());os.Exit(1)}
 	reader := csv.NewReader(bufio.NewReader(f))
 	// prepare the connection on the client side
-	conn, err := grpc.Dial(ADDRESS, grpc.WithInsecure())
+	conn, err := grpc.Dial(config.ADDRESS, grpc.WithInsecure())
 	if err !=nil{log.Println(err.Error());os.Exit(2)}
-	client := pb.NewTransferClient(conn)
+	client := pipe.NewTransferClient(conn)
 	if err != nil {
-		log.Printf("Unable to connect to %s: %s", ADDRESS, err.Error())
+		log.Printf("Unable to connect to %s: %s", config.ADDRESS, err.Error())
 		os.Exit(1)
 	}
 	ctx, cancel := context.WithCancel(context.Background())

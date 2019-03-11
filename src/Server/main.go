@@ -1,11 +1,9 @@
 package main
 
 import (
-	pb "../pipeProto"
-	"context"
+	pp "../pipe"
 	"fmt"
 	"github.com/globalsign/mgo"
-	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/grpc"
 	"log"
 	"net"
@@ -15,19 +13,37 @@ import (
 
 var accountTable *mgo.Collection
 
-type server struct{}
-
-func (s *server) AddUpdateRecord(ctx context.Context, in *pb.Record) (_ *empty.Empty, err error) {
-	log.Printf("Receiver: %v\n", in)
-	_, err = accountTable.UpsertId(in.Id, &in)
-	if err != nil {
-		log.Println("Updated", in.Id)
-	}
-	return &empty.Empty{}, nil
+type transferServer struct{
+	itemC chan pp.Record
 }
 
-func main() {
-	// handling the
+
+//func RegisterTransferServer() pp.TransferServer {
+//	return &transferServer{itemC: make(chan pp.Record, NSTREAM)}
+//}
+
+
+func (s *transferServer) AddUpdateRecord( errS  pp.Transfer_AddUpdateRecordServer)(err error){
+	for item := range s.itemC {
+		log.Printf("Receiver: %v\n", item)
+		_, err = accountTable.UpsertId(item.Id, &item)
+		// checking the upsert and returning a Ack object over the error Stream
+		if err != nil {
+			msg:=fmt.Sprint("Error on Update: ", item.Id, " err: ",err.Error())
+			ack := &pp.Ack{Err:err==nil,Message:msg}
+			// halting the read loop if the connections is not working
+			if err = errS.Send(ack); err != nil {
+				s.itemC <- item
+				log.Printf("Stream connection failed: %v", err)
+				return
+			}
+			log.Println("Error on Update: ", item.Id, " err: ",err)
+		}
+	}
+	return
+}
+
+func signalHandling(){
 	c := make(chan os.Signal, 1)
 	signal.Notify(c, os.Interrupt,os.Kill)
 	go func() {
@@ -37,7 +53,11 @@ func main() {
 			os.Exit(1)
 		}
 	}()
+}
 
+func main() {
+	// handling the signals
+	signalHandling()
 	// connecting to the database
 	mongoSession, err := mgo.DialWithTimeout(MONGODBHOSTS+"/"+MONGODBDATABASE, TIMEOUTDATABASE)
 	if err != nil {
@@ -50,7 +70,7 @@ func main() {
 			log.Fatalf("failed to listen: %v", err)
 		}
 		s := grpc.NewServer()
-		pb.RegisterTransferServer(s, &server{})
+		pp.RegisterTransferServer(s, &transferServer{})
 		if err := s.Serve(lis); err != nil {
 			log.Fatalf("failed to serve: %v", err)
 		}

@@ -4,7 +4,7 @@
 package main
 
 import (
-	pb "../pipeProto"
+	pb "../pipe"
 	"bufio"
 	"context"
 	"encoding/csv"
@@ -36,15 +36,15 @@ func UniformNumbers(phoneNumber string) (phoneNumberFiltered string) {
 	return
 }
 
-// SendgRPC handle the connection , intialize and send a new record over the connection
-func SendgRPC(record []string, c pb.TransferClient, ctx context.Context) (err error) {
+// SendgRPC handle the connection , initialize and send a new record over the connection
+func SendgRPC(record []string, c pb.TransferClient) (err error) {
 	id, err := strconv.ParseInt(record[0], 0, 64)
 	if err != nil {
 		err = errors.New("invalid id cannot send a not int value: " + record[0] + "err: " + err.Error())
 		return
 	}
 	item := &pb.Record{Id: id, Name: record[1], Email: record[1], Phone: record[2]}
-	_, err = c.AddUpdateRecord(ctx, item)
+	_, err = c.Add( item)
 
 	if err != nil {
 		log.Println("Error on server response ID:", item.Id, " Error: ", err.Error())

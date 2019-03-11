@@ -1,11 +1,12 @@
 syntax = "proto3";
 
+
+
 package pipe;
 
-import "google/protobuf/empty.proto";
 
 service Transfer {
-        rpc AddUpdateRecord (Record) returns (google.protobuf.Empty){}
+        rpc AddUpdateRecord (stream Record) returns (stream Ack){}
 }
 
 message Record {
@@ -15,3 +16,8 @@ message Record {
     string phone = 4;
 }
 
+
+message Ack {
+    bool   err    =1;
+    string message =2 ;
+}

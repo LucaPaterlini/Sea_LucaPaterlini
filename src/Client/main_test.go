@@ -1,7 +1,7 @@
 package main
 
 import (
-	pb "../pipeProto"
+	pb "../pipe"
 	"context"
 	"google.golang.org/grpc"
 	"testing"

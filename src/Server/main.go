@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/globalsign/mgo"
 	"google.golang.org/grpc"
+	"io"
 	"log"
 	"net"
 	"os"
@@ -13,36 +14,38 @@ import (
 
 var accountTable *mgo.Collection
 
-type transferServer struct{
-	itemC chan pp.Record
-}
+type transferServer struct{}
 
-
-//func RegisterTransferServer() pp.TransferServer {
-//	return &transferServer{itemC: make(chan pp.Record, NSTREAM)}
-//}
-
-
-func (s *transferServer) AddUpdateRecord( errS  pp.Transfer_AddUpdateRecordServer)(err error){
-	for item := range s.itemC {
+// AddUpdateRecord implement the functionality of receiving a Rercord and Upsert it in the mongodb database
+func (s *transferServer) AddUpdateRecord( stream  pp.Transfer_AddUpdateRecordServer)(err error){
+	fmt.Println("hello")
+	for {
+		var item *pp.Record
+		item, err = stream.Recv()
+		if err == io.EOF {
+			return nil
+		}
+		if err != nil {
+			return err
+		}
 		log.Printf("Receiver: %v\n", item)
 		_, err = accountTable.UpsertId(item.Id, &item)
-		// checking the upsert and returning a Ack object over the error Stream
+		// checking the upInsert and returning a Ack object over the error Stream
+		var msg = ""
 		if err != nil {
-			msg:=fmt.Sprint("Error on Update: ", item.Id, " err: ",err.Error())
-			ack := &pp.Ack{Err:err==nil,Message:msg}
-			// halting the read loop if the connections is not working
-			if err = errS.Send(ack); err != nil {
-				s.itemC <- item
-				log.Printf("Stream connection failed: %v", err)
-				return
-			}
-			log.Println("Error on Update: ", item.Id, " err: ",err)
+			msg = fmt.Sprint("Error on Update: ", item.Id, " err: ", err.Error())
 		}
-	}
-	return
+		ack := &pp.Ack{Err: err != nil, Message: msg}
+		// halting the read loop if the connections is not working
+		if err = stream.Send(ack); err != nil {
+				log.Printf("Stream connection failed: %v", err.Error())
+				return err
+			}
+		}
 }
 
+
+// signalHandling the reception of a signal and halt the service gracefully
 func signalHandling(){
 	c := make(chan os.Signal, 1)
 	signal.Notify(c, os.Interrupt,os.Kill)

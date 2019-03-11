@@ -14,10 +14,12 @@ message Record {
     string name = 2;
     string email = 3;
     string phone = 4;
+    int64 serial = 5;
 }
 
 
 message Ack {
     bool   err    =1;
     string message =2 ;
+    int64 serial = 3;
 }
